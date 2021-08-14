@@ -1,0 +1,13 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN] 2021/08/14 - 22:34:54 | 404 |       2.695µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:34:59 | 404 |       5.691µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:00 | 404 |       4.148µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:00 | 404 |       2.094µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:01 | 404 |       2.945µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:01 | 404 |       1.904µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:01 | 404 |       2.335µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:01 | 404 |       1.843µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/14 - 22:35:01 | 404 |       2.174µs |       127.0.0.1 | GET      "/api/array"

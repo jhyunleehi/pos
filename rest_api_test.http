@@ -1,0 +1,10 @@
+@targetip=127.0.0.1:8080
+@accept=application/json
+@content_type=application/json
+
+###
+GET http://{{targetip}}/api/array
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+
