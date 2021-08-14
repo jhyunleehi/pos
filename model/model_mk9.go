@@ -1,35 +1,5 @@
 package model
 
-type Request struct {
-	Command string      `json:"command"`
-	Rid     string      `json:"rid"`
-	Param   interface{} `json:"param,omitempty"`
-}
-
-type Response struct {
-	Rid             string      `json:"rid"`
-	LastSuccessTime int64       `json:"lastSuccessTime"`
-	Result          Result      `json:"result"`
-	Info            interface{} `json:"info,omitempty"`
-}
-
-type Result struct {
-	Status Status      `json:"status"`
-	Data   interface{} `json:"data,omitempty"`
-}
-
-type Status struct {
-	Module      string `json:"module"`
-	Code        int    `json:"code"`
-	Level       string `json:"level,omitempty"`
-	Description string `json:"description"`
-	Problem     string `json:"problem,omitempty"`
-	Solution    string `json:"solution,omitempty"`
-}
-
-type Device struct {
-	DeviceName string `json:"deviceName"`
-}
 
 type SystemParam struct {
 	Level string `json:"level,omitempty"`
@@ -149,9 +119,6 @@ type QosParam struct {
 	Maxiops uint64   `json:"maxiops,omitempty"`
 }
 
-type Volume struct {
-	VolumeName string `json:"volumeName"`
-}
 
 //type SMART struct {
 //	AvailableSpare           string `json:"available_spare,omitempty"`

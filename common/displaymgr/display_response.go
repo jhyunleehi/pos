@@ -3,7 +3,7 @@ package displaymgr
 import (
 	"fmt"
 	"strconv"
-	"pos/util"
+	"pos/common/util"
 	"pos/model"
 	"encoding/json"
 

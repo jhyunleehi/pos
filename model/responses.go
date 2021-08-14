@@ -1,4 +1,4 @@
-package messages
+package model
 
 // JSON message formats for ADDSPARE command
 type Response struct {

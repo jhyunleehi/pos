@@ -1,7 +1,7 @@
 package displaymgr
 
 import (
-	"cli/cmd/globals"
+	"pos/api/globals"
 
 	log "github.com/sirupsen/logrus"
 )

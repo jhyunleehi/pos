@@ -36,17 +36,14 @@ func init() {
 	log.Printf("[%s][%d]\n", server, port)
 }
 
-func setupRouter() *gin.Engine {
-
+func setupRouter() (*gin.Engine) {
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery())
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
 	corsConfig.AllowHeaders = []string{"*"}
 	r.Use(cors.New(corsConfig))
-
 	api.ApplyRoutes(r)
-
 	return r
 }
 

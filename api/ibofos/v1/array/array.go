@@ -1,8 +1,7 @@
 package array
 
 import (
-	"encoding/json"
-	"pos/api/ibofos"
+	"encoding/json"	
 	"pos/model"
 	"pos/common/displaymgr"
 	"pos/common/socketmgr"

@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"net"
 	"path/filepath"
-	"pnconnector/src/log"
 
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
 

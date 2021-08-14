@@ -7,8 +7,7 @@ import (
 )
 
 func ApplyRoutes(r *gin.Engine) {
-	api := r.Group("/api")
-	{
+	api := r.Group("/api")	{
 		ibofos.ApplyRoutes(api)
 	}
 }

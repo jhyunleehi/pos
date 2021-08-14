@@ -1,13 +1,13 @@
 package v1
 
 import (
-	"pos/api/ibofos/array"
-	"pos/api/ibofos/device"
-	"pos/api/ibofos/internal"
-	"pos/api/ibofos/system"
-	"pos/api/ibofos/volume"
+	"pos/api/ibofos/v1/array"
+	"pos/api/ibofos/v1/device"
+	"pos/api/ibofos/v1/internal"
+	"pos/api/ibofos/v1/system"
+	"pos/api/ibofos/v1/volume"
 
-	"gihub.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func ApplyRoutes(r *gin.Engine) {

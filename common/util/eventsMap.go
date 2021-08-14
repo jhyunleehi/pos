@@ -1,9 +1,9 @@
 package util
 
 import (
-	"pnconnector/src/errors"
-	"pnconnector/src/log"
-	"pnconnector/src/routers/m9k/model"
+	"errors"
+	log "github.com/sirupsen/logrus"
+	"pos/model"
 	_"fmt"
 	"gopkg.in/yaml.v2"
 )
