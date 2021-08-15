@@ -8,5 +8,5 @@ import (
 func PrintRequest(reqJSON string) {
 	if IsJSONReq {
 		log.Print(string(reqJSON))
-	}
+	}	
 }
