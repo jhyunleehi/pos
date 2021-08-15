@@ -13,9 +13,14 @@ type Result struct {
 	DATA   interface{} `json:"data,omitempty"`
 }
 
-type Status struct {
+type Status struct {	
+	MODULE      string `json:"module"`
 	CODE        int    `json:"code"`
+	LEVEL       string `json:"level,omitempty"`
 	DESCRIPTION string `json:"description"`
+	PROBLEM     string `json:"problem,omitempty"`
+	SOLUTION    string `json:"solution,omitempty"`
+
 }
 
 type Info struct {

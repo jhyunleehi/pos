@@ -1,13 +1,12 @@
 package displaymgr
 
-import (
-	"pos/api/globals"
+import (	
 
 	log "github.com/sirupsen/logrus"
 )
 
 func PrintRequest(reqJSON string) {
-	if globals.IsJSONReq {
+	if IsJSONReq {
 		log.Print(string(reqJSON))
 	}
 }

@@ -1,4 +1,4 @@
-package globals
+package displaymgr
 
 var IsDebug = false
 var IsJSONReq = false

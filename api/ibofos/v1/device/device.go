@@ -4,6 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ApplyRoutes(r *gin.Engine) {
+func AddRoutes(r *gin.RouterGroup) {
 
 }

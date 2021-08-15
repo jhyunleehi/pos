@@ -10,12 +10,14 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func ApplyRoutes( r *gin.Engine){
-	parray  :=  r.Group("/array")
-	parray.GET("", GetArray) 
+func AddRoutes(r *gin.RouterGroup) {
+	route  :=  r.Group("/array")
+	{
+		route.GET("", GetArray) 
+	}
 }
 
-func GetArray (c *gin.Context) {
+func GetArray (r *gin.Context) {
 
 		var command = "GETIBOFOSINFO"
 
@@ -35,5 +37,5 @@ func GetArray (c *gin.Context) {
 		resJSON := socketmgr.SendReqAndReceiveRes(string(reqJSON))
 		socketmgr.Close()
 
-		displaymgr.PrintResponse(command, resJSON, globals.IsDebug, globals.IsJSONRes)
+		displaymgr.PrintResponse(command, resJSON, true, true, true)
 }

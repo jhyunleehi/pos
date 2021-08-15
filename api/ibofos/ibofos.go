@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ApplyRoutes(r *gin.Engine) {
-	ibofos := r.Group("/ibofos")
+func SetRoutes(r *gin.RouterGroup) {
+	route := r.Group("/ibofos")
 	{
-		v1.ApplyRoutes(ibofos)
+		v1.AddRoutes(route)
 	}
 }

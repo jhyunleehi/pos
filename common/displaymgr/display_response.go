@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func PrintResponse(command string, resJSON string, isDebug bool, isJSONRes bool) {
+func PrintResponse(command string, resJSON string, isDebug bool, isJSONRes bool, IsJSONReq bool) {
 	if isDebug {
 		printResToDebug(resJSON)
 	}
@@ -32,11 +32,11 @@ func printResToDebug(resJSON string) {
 	log.Println()
 	log.Println("------------ Debug message ------------")
 
-	log.Println("Code         : ", statusInfo.Code)
-	log.Println("Level        : ", statusInfo.Level)
-	log.Println("Description  : ", statusInfo.Description)
-	log.Println("Problem      : ", statusInfo.Problem)
-	log.Println("Solution     : ", statusInfo.Solution)
+	log.Println("Code         : ", statusInfo.CODE)
+	log.Println("Level        : ", statusInfo.LEVEL)
+	log.Println("Description  : ", statusInfo.DESCRIPTION)
+	log.Println("Problem      : ", statusInfo.PROBLEM)
+	log.Println("Solution     : ", statusInfo.SOLUTION)
 	//log.Println("Data         : ", res.RESULT.DATA)
 }
 
@@ -229,8 +229,8 @@ func printStatus(code int) {
 	} else {
 		statusInfo, _ := util.GetStatusInfo(code)
 		fmt.Println("A problem occured during process with error code " +
-			strconv.Itoa(code) + " - " + statusInfo.Description)
+			strconv.Itoa(code) + " - " + statusInfo.DESCRIPTION)
 
-		fmt.Println("Possible solution: " + statusInfo.Solution)
+		fmt.Println("Possible solution: " + statusInfo.SOLUTION)
 	}
 }

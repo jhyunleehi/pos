@@ -10,11 +10,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ApplyRoutes(r *gin.Engine) {
-	v1 := r.Group("/v1")
-	array.ApplyRoutes(v1)
-	device.ApplyRoutes(v1)
-	internal.ApplyRoutes(v1)
-	system.ApplyRoutes(v1)
-	volume.ApplyRoutes(v1)
+func AddRoutes(r *gin.RouterGroup) {
+	route := r.Group("/v1")
+	{
+		array.AddRoutes(route)
+		device.AddRoutes(route)
+		internal.AddRoutes(route)
+		system.AddRoutes(route)
+		volume.AddRoutes(route)
+	}
 }

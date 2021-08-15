@@ -1,10 +1,11 @@
 package util
 
 import (
-	"errors"
-	log "github.com/sirupsen/logrus"
+	"errors"	
+	"io/ioutil"
 	"pos/model"
-	_"fmt"
+
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
 
@@ -19,10 +20,10 @@ type info2 struct {
 }
 
 type module struct {
-	Name    string `yaml:"name"`
-	Count   int    `yaml:"count"`
-	Idstart int    `yaml:"idStart"`
-	Idend   int    `yaml:"idEnd"`
+	Name    string  `yaml:"name"`
+	Count   int     `yaml:"count"`
+	Idstart int     `yaml:"idStart"`
+	Idend   int     `yaml:"idEnd"`
 	Info    []info2 `yaml:"info"`
 }
 type PosEvents struct {
@@ -30,38 +31,31 @@ type PosEvents struct {
 }
 
 func init() {
-	LoadEvents()
-}
-
-func LoadEvents() {
-	file, err := Asset("../resources/events.yaml")
-
+	yfile, err := ioutil.ReadFile("events.yaml")
 	if err != nil {
-		log.Infof("LoadSeverConfig : %v\n EventId cannot be decoded\n", err)
-	} else {
-		err = yaml.Unmarshal(file, &eventsmap)
-		if err != nil {
-			log.Fatalf("loadevents Error : %v", err)
-		}
+		log.Fatal(err)
+	}	
+	err2 := yaml.Unmarshal(yfile, &eventsmap)
+	if err2 != nil {
+		log.Fatal(err2)
 	}
 }
 
 func GetStatusInfo(code int) (model.Status, error) {
 	var status model.Status
-	status.Code = code
+	status.CODE= code
 	totMods := len(eventsmap.Modules)
 
 	for i := 0; i < totMods; i++ {
 		if code >= eventsmap.Modules[i].Idstart && code <= eventsmap.Modules[i].Idend {
 			totInfo := len(eventsmap.Modules[i].Info)
-
 			for j := 0; j < totInfo; j++ {
 				if eventsmap.Modules[i].Info[j].Code == code {
-					status.Module = eventsmap.Modules[i].Name
-					status.Description = eventsmap.Modules[i].Info[j].Message
-					status.Problem = eventsmap.Modules[i].Info[j].Problem
-					status.Solution = eventsmap.Modules[i].Info[j].Solution
-					status.Level = eventsmap.Modules[i].Info[j].Level
+					status.MODULE = eventsmap.Modules[i].Name
+					status.DESCRIPTION = eventsmap.Modules[i].Info[j].Message
+					status.PROBLEM = eventsmap.Modules[i].Info[j].Problem
+					status.SOLUTION = eventsmap.Modules[i].Info[j].Solution
+					status.LEVEL = eventsmap.Modules[i].Info[j].Level
 
 					return status, nil
 				}
