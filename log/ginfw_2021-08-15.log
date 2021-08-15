@@ -1,0 +1,8 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN] 2021/08/15 - 21:23:30 | 404 |       1.513µs |       127.0.0.1 | GET      "/api/array"
+[GIN] 2021/08/15 - 21:28:28 | 200 |   57.014619ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/15 - 21:28:58 | 200 |   14.766599ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"

@@ -3,7 +3,7 @@
 @content_type=application/json
 
 ###
-GET http://{{targetip}}/api/array
+GET http://{{targetip}}/api/ibofos/v1/array
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
