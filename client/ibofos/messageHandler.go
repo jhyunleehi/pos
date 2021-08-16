@@ -5,6 +5,8 @@ import (
 	"errors"	
 	"time"
 
+	"github.com/google/uuid"
+	"github.com/spf13/viper"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -22,13 +24,24 @@ var (
 type Requester struct {
 	XrId           string
 	Param          interface{}
-	ParamType      interface{}
+	//ParamType      interface{}
 	IbofServerIP   string
 	IbofServerPort int
 }
 func init(){
 	log.SetLevel(log.DebugLevel)
 	log.SetReportCaller(true)	
+}
+
+func Setup(param interface{}) (Requester, error ){
+	req := Requester {
+		XrId:           uuid.New().String(),
+		IbofServerIP:   viper.GetString("server.ibof.ip"),
+		IbofServerPort: viper.GetInt("server.ibof.port"),
+		Param:          param,
+		//ParamType:      paramtype,
+	}
+	return req, nil
 }
 
 func (rq Requester) Send(command string) (Request, Response, error) {
@@ -51,7 +64,7 @@ func (rq Requester) checkJsonType() error {
 	var err error
 	marshalled, _ := json.Marshal(rq.Param)
 
-	switch param := rq.ParamType.(type) {
+	switch param := rq.Param.(type) {
 	case ArrayParam:
 		err = json.Unmarshal(marshalled, &param)
 	case DeviceParam:

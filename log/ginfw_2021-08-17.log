@@ -26,3 +26,67 @@
 [GIN] 2021/08/17 - 00:12:06 | 200 |   17.480356ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes?array=POSArray"
 [GIN] 2021/08/17 - 00:12:10 | 200 |    24.55535ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes"
 [GIN] 2021/08/17 - 00:12:45 | 200 |   13.423845ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices    --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/all/scan --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/:devicename/smart --> pos/api/ibofos/v1/device.GetDeviceSmart (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN] 2021/08/17 - 00:35:06 | 200 |   17.600812ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN] 2021/08/17 - 00:35:45 | 200 |   17.519119ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/all/scan"
+[GIN] 2021/08/17 - 00:36:04 | 200 |   29.371486ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/all/scan"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices    --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/all/scan --> pos/api/ibofos/v1/device.GetDeviceScan (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/:devicename/smart --> pos/api/ibofos/v1/device.GetDeviceSmart (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN] 2021/08/17 - 00:37:30 | 200 |  179.839739ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/all/scan"
+[GIN] 2021/08/17 - 00:37:46 | 200 |   17.953113ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN] 2021/08/17 - 00:38:15 | 200 |   28.173097ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/unvme-ns-0/smart"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices    --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/all/scan --> pos/api/ibofos/v1/device.GetDeviceScan (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/:devicename/smart --> pos/api/ibofos/v1/device.GetDeviceSmart (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN] 2021/08/17 - 00:47:30 | 200 |    27.20919ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN] 2021/08/17 - 00:47:38 | 200 |   17.046362ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/unvme-ns-0/smart"
+[GIN] 2021/08/17 - 00:47:47 | 200 |   19.159196ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes"
+[GIN] 2021/08/17 - 00:47:56 | 200 |   20.755772ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes?array=POSArray"
+[GIN] 2021/08/17 - 00:48:05 | 200 |   20.532072ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes/vol1"
+[GIN] 2021/08/17 - 00:48:27 | 200 |    29.23512ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes/vol1?array=POSArray"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices    --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/all/scan --> pos/api/ibofos/v1/device.GetDeviceScan (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/:devicename/smart --> pos/api/ibofos/v1/device.GetDeviceSmart (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN] 2021/08/17 - 00:51:49 | 200 |   23.346111ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/17 - 00:51:57 | 200 |   11.079768ms |       127.0.0.1 | GET      "/api/ibofos/v1/system"
+[GIN] 2021/08/17 - 00:51:59 | 200 |   18.873329ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN] 2021/08/17 - 00:52:01 | 200 |  114.034197ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/all/scan"
+[GIN] 2021/08/17 - 00:52:04 | 200 |   33.491185ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/unvme-ns-0/smart"
+[GIN] 2021/08/17 - 00:52:12 | 200 |   18.060876ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes"
+[GIN] 2021/08/17 - 00:52:16 | 200 |   15.306273ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes?array=POSArray"
+[GIN] 2021/08/17 - 00:52:19 | 200 |   30.515777ms |       127.0.0.1 | GET      "/api/ibofos/v1/volumes/vol1?array=POSArray"

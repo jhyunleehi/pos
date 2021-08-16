@@ -13,14 +13,20 @@ GET http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
-
-
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
+###
+GET http://{{targetip}}/api/ibofos/v1/devices/all/scan
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
 
+###
+GET http://{{targetip}}/api/ibofos/v1/devices/unvme-ns-0/smart
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/volumes
@@ -32,10 +38,8 @@ GET http://{{targetip}}/api/ibofos/v1/volumes?array=POSArray
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
-
-
 ###
-GET http://{{targetip}}/api/ibofos/v1/volumes/vol1
+GET http://{{targetip}}/api/ibofos/v1/volumes/vol1?array=POSArray
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
