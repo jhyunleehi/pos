@@ -41,6 +41,7 @@ func Connect() {
 	if err != nil {
 		log.Debug("error:", err)
 	}
+	defer Close()
 }
 
 func SendReqAndReceiveRes(reqJSON string) string {
