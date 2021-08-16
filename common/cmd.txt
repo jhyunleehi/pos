@@ -1,0 +1,43 @@
+    cmdDictionary["SMART"] = new SmartCommand();
+    cmdDictionary["LOGGERINFO"] = new LoggerInfoCommand();
+    cmdDictionary["SCANDEVICE"] = new ScanDeviceCommand();
+    cmdDictionary["LISTDEVICE"] = new ListDeviceCommand();
+    cmdDictionary["ADDDEVICE"] = new AddDeviceCommand();
+    cmdDictionary["REMOVEDEVICE"] = new RemoveDeviceCommand();
+    cmdDictionary["CREATEDEVICE"] = new CreateDeviceCommand();
+
+    cmdDictionary["LISTARRAY"] = new ListArrayCommand();
+    cmdDictionary["CREATEARRAY"] = new CreateArrayCommand();
+    cmdDictionary["DELETEARRAY"] = new DeleteArrayCommand();
+    cmdDictionary["MOUNTARRAY"] = new MountArrayCommand();
+    cmdDictionary["UNMOUNTARRAY"] = new UnmountArrayCommand();
+    cmdDictionary["LISTARRAYDEVICE"] = new ListArrayDeviceCommand();
+    cmdDictionary["ARRAYINFO"] = new ArrayInfoCommand();
+    
+    cmdDictionary["RESETMBR"] = new ResetMbrCommand();
+    cmdDictionary["DELETESUBSYSTEM"] = new DeleteSubsystemCommand();
+    
+    cmdDictionary["CREATEVOLUME"] = new CreateVolumeCommand();
+    cmdDictionary["DELETEVOLUME"] = new DeleteVolumeCommand();
+    cmdDictionary["MOUNTVOLUME"] = new MountVolumeCommand();
+    cmdDictionary["UNMOUNTVOLUME"] = new UnmountVolumeCommand();
+    cmdDictionary["LISTVOLUME"] = new ListVolumeCommand();
+    cmdDictionary["RENAMEVOLUME"] = new RenameVolumeCommand();
+    cmdDictionary["RESIZEVOLUME"] = new ResizeVolumeCommand();
+    
+    cmdDictionary["GETMAXVOLUMECOUNT"] = new GetMaxVolumeCountCommand();
+    cmdDictionary["GETHOSTNQN"] = new GetHostNqnCommand();
+    cmdDictionary["CONDSIGNAL"] = new CondSignalCommand();
+    cmdDictionary["GETIBOFOSINFO"] = new GetPosInfoCommand();
+    cmdDictionary["EXITIBOFOS"] = new ExitIbofosCommand();
+    cmdDictionary["STOPREBUILDING"] = new StopRebuildingCommand();
+    cmdDictionary["REBUILDPERFIMPACT"] = new RebuildPerfImpactCommand();
+    cmdDictionary["APPLYLOGFILTER"] = new ApplyLogFilterCommand();
+    cmdDictionary["SETLOGLEVEL"] = new SetLogLevelCommand();
+    cmdDictionary["GETLOGLEVEL"] = new GetLogLevelCommand();
+    cmdDictionary["LISTWBT"] = new ListWbtCommand();
+    cmdDictionary["WBT"] = new HandleWbtCommand();
+    cmdDictionary["LISTQOSPOLICIES"] = new QosListPoliciesCommand();
+    
+    cmdDictionary["CREATEQOSVOLUMEPOLICY"] = new QosCreateVolumePolicyCommand();
+    cmdDictionary["RESETQOSVOLUMEPOLICY"] = new QosResetVolumePolicyCommand();

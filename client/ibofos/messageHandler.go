@@ -26,6 +26,10 @@ type Requester struct {
 	IbofServerIP   string
 	IbofServerPort int
 }
+func init(){
+	log.SetLevel(log.DebugLevel)
+	log.SetReportCaller(true)	
+}
 
 func (rq Requester) Send(command string) (Request, Response, error) {
 	iBoFRequest := Request{

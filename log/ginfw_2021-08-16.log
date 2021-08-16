@@ -105,3 +105,91 @@
 [GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
 [GIN] 2021/08/16 - 16:55:13 | 200 |   20.365825ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
 [GIN] 2021/08/16 - 16:57:08 | 200 |   17.163321ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN] 2021/08/16 - 21:33:28 | 200 |   42.748172ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN] 2021/08/16 - 22:23:56 | 200 |   38.572769ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/16 - 22:24:44 | 200 |    34.02692ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN] 2021/08/16 - 22:43:00 | 200 |   20.436382ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN] 2021/08/16 - 22:44:02 | 200 |   21.796594ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN] 2021/08/16 - 22:49:51 | 200 |   19.644195ms |       127.0.0.1 | GET      "/api/ibofos/v1/system"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN] 2021/08/16 - 22:53:53 | 200 |   11.646821ms |       127.0.0.1 | GET      "/api/ibofos/v1/system"
+[GIN] 2021/08/16 - 22:54:32 | 200 |   14.649345ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/16 - 22:58:03 | 200 |   19.657521ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/16 - 22:59:51 | 200 |   15.858203ms |       127.0.0.1 | GET      "/api/ibofos/v1/system"
+[GIN] 2021/08/16 - 22:59:57 | 200 |   15.711407ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN] 2021/08/16 - 23:19:57 | 404 |     779.593µs |       127.0.0.1 | GET      "/api/ibofos/v1/device"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/device     --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN] 2021/08/16 - 23:20:11 | 200 |   49.342345ms |       127.0.0.1 | GET      "/api/ibofos/v1/device"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/device     --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN] 2021/08/16 - 23:22:17 | 200 |   35.420856ms |       127.0.0.1 | GET      "/api/ibofos/v1/device"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/device     --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN] 2021/08/16 - 23:26:07 | 200 |   23.291129ms |       127.0.0.1 | GET      "/api/ibofos/v1/device"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.GetArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/device     --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volume     --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN] 2021/08/16 - 23:49:49 | 200 |   19.084216ms |       127.0.0.1 | GET      "/api/ibofos/v1/volume"
+[GIN] 2021/08/17 - 00:03:39 | 404 |       1.403µs |       127.0.0.1 | GET      "/api/ibofos/v1/volumes"

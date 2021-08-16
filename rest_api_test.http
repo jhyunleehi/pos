@@ -8,3 +8,34 @@ Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
 
+###
+GET http://{{targetip}}/api/ibofos/v1/system
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+
+
+###
+GET http://{{targetip}}/api/ibofos/v1/devices
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+
+
+###
+GET http://{{targetip}}/api/ibofos/v1/volumes
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+GET http://{{targetip}}/api/ibofos/v1/volumes?array=POSArray
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+
+
+###
+GET http://{{targetip}}/api/ibofos/v1/volumes/vol1
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+

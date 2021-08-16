@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
+	"github.com/spf13/viper"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -23,11 +24,11 @@ func GetArray(c *gin.Context) {
 	}
 	client := ibofos.Requester{
 		XrId:           uuid.New().String(),
-		IbofServerIP:   "127.0.0.1",
-		IbofServerPort: 18716,
+		IbofServerIP:   viper.GetString("server.ibof.ip"),
+		IbofServerPort: viper.GetInt("server.ibof.port"),
 		Param:          param,
 		ParamType:      ibofos.ArrayParam{},
-	}
+	}	
 	req, res, err := client.Send("ARRAYINFO")
 	if err != nil {
 		log.Errorf("%s", err.Error())

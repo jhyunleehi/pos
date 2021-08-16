@@ -2,10 +2,14 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"path"
 	"pos/api"
+	"runtime"
+	"strings"
 	"time"
 
 	nested "github.com/antonfisher/nested-logrus-formatter"
@@ -16,14 +20,6 @@ import (
 )
 
 func init() {
-	log.SetLevel(log.TraceLevel)
-	log.SetReportCaller(true)
-	log.SetFormatter(&nested.Formatter{
-		HideKeys:        true,
-		TimestampFormat: time.RFC3339,
-		NoColors:        false,
-	})
-
 	env := flag.String("env", "config", "Environment")
 	viper.SetConfigName(*env)
 	viper.SetConfigType("yaml")
@@ -34,9 +30,43 @@ func init() {
 	server := viper.GetString("server.ibof.ip")
 	port := viper.GetInt("server.ibof.port")
 	log.Printf("[%s][%d]\n", server, port)
+
+	logstr := viper.GetString("logging.level")	
+	level, err := log.ParseLevel(logstr)
+	if err != nil {
+		log.Errorf("%v", err)
+		return
+	}
+	log.SetLevel(level)
+	log.SetReportCaller(true)
+	log.SetFormatter(&nested.Formatter{
+		HideKeys:        true,
+		TimestampFormat: time.RFC3339,
+		NoColors:        true,
+		CustomCallerFormatter: func(f *runtime.Frame) string {
+			s := strings.Split(f.Function, ".")
+			funcName := s[len(s)-1]
+			return fmt.Sprintf("[%s:%d %s()] ", path.Base(f.File), f.Line, funcName)
+		},
+	})
+	logdir := viper.GetString("logging.directory")
+	log.Debugf("%v",logdir)
+	finfo, err := os.Stat(logdir)	 
+	if os.IsNotExist(err) {
+		err := os.MkdirAll(logdir, 0755)
+		if err != nil {
+			log.Error(err)
+		}
+		log.Debugf("%v",finfo)
+	}
+	logFile, err := os.OpenFile(logdir+"////pos_"+time.Now().Format("2006-01-02")+".log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Error(err.Error())
+	}
+	log.SetOutput(logFile)
 }
 
-func setupRouter() (*gin.Engine) {
+func setupRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery())
 	corsConfig := cors.DefaultConfig()
