@@ -12,6 +12,8 @@ import (
 	"strings"
 	"time"
 
+	"pos/common/events"
+
 	nested "github.com/antonfisher/nested-logrus-formatter"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -31,12 +33,13 @@ func init() {
 	port := viper.GetInt("server.ibof.port")
 	log.Printf("[%s][%d]\n", server, port)
 
-	logstr := viper.GetString("logging.level")	
+	logstr := viper.GetString("logging.level")
 	level, err := log.ParseLevel(logstr)
 	if err != nil {
 		log.Errorf("%v", err)
 		return
 	}
+	//logging
 	log.SetLevel(level)
 	log.SetReportCaller(true)
 	log.SetFormatter(&nested.Formatter{
@@ -50,20 +53,24 @@ func init() {
 		},
 	})
 	logdir := viper.GetString("logging.directory")
-	log.Debugf("%v",logdir)
-	finfo, err := os.Stat(logdir)	 
+	log.Debugf("%v", logdir)
+	finfo, err := os.Stat(logdir)
 	if os.IsNotExist(err) {
 		err := os.MkdirAll(logdir, 0755)
 		if err != nil {
 			log.Error(err)
 		}
-		log.Debugf("%v",finfo)
+		log.Debugf("%v", finfo)
 	}
 	logFile, err := os.OpenFile(logdir+"////pos_"+time.Now().Format("2006-01-02")+".log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Error(err.Error())
 	}
 	log.SetOutput(logFile)
+
+	//event
+	events.Setup()
+
 }
 
 func setupRouter() *gin.Engine {

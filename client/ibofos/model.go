@@ -13,6 +13,27 @@ type Response struct {
 	Info            interface{} `json:"info,omitempty"`
 }
 
+type BodyParam struct {
+	Param struct {
+		Name        string   `json:"name,omitempty"`
+		NewName     string   `json:"newname,omitempty"`
+		Array       string   `json:"array,omitempty"`
+		SubNQN      string   `json:"subnqn,omitempty"`
+		Size        uint64   `json:"size,omitempty"`
+		Maxiops     uint64   `json:"maxiops,omitempty"`
+		Maxbw       uint64   `json:"maxbw,omitempty"`
+		NameSuffix  uint64   `json:"namesuffix,omitempty"`
+		TotalCount  uint64   `json:"totalcount,omitempty"`
+		StopOnError bool     `json:"stoponerror,omitempty"`
+		MountAll    bool     `json:"mountall,omitempty"`
+		FtType      int      `json:"fttype,omitempty"`
+		RaidType    string   `json:"raidtype,omitempty"`
+		Buffer      []Device `json:"buffer,omitempty"`
+		Data        []Device `json:"data,omitempty"`
+		Spare       []Device `json:"spare,omitempty"`
+	} `json:"param,omitempty"`
+}
+
 type Result struct {
 	Status Status      `json:"status"`
 	Data   interface{} `json:"data,omitempty"`
@@ -40,13 +61,13 @@ type LoggerParam struct {
 }
 
 type ArrayParam struct {
-	FtType      int      `json:"fttype,omitempty"`
-	Name        string   `json:"name,omitempty"`
-	RaidType    string   `json:"raidtype,omitempty"`
-	Buffer      []Device `json:"buffer,omitempty"`
-	Data        []Device `json:"data,omitempty"`
-	Spare       []Device `json:"spare,omitempty"`
-	Array       string   `json:"array,omitempty"`
+	FtType   int      `json:"fttype,omitempty"`
+	Name     string   `json:"name,omitempty"`
+	RaidType string   `json:"raidtype,omitempty"`
+	Buffer   []Device `json:"buffer,omitempty"`
+	Data     []Device `json:"data,omitempty"`
+	Spare    []Device `json:"spare,omitempty"`
+	Array    string   `json:"array,omitempty"`
 }
 
 type MAgentParam struct {
@@ -55,12 +76,12 @@ type MAgentParam struct {
 }
 
 type DeviceParam struct {
-	Name        string `json:"name,omitempty"`
-	Spare       string `json:"spare,omitempty"`
-	Array       string `json:"array,omitempty"`
-	DevType		string `json:"dev_type,omitempty"`
-	NumBlocks	uint `json:"num_blocks,omitempty"`
-	BlockSize	uint `json:"block_size,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Spare     string `json:"spare,omitempty"`
+	Array     string `json:"array,omitempty"`
+	DevType   string `json:"dev_type,omitempty"`
+	NumBlocks uint   `json:"num_blocks,omitempty"`
+	BlockSize uint   `json:"block_size,omitempty"`
 }
 type VolumeParam struct {
 	Name        string `json:"name,omitempty"`
@@ -141,16 +162,16 @@ type BuildInfo struct {
 }
 
 type QosParam struct {
-    Vol    []Volume `json:"vol,omitempty"`
-    Array   string `json:"array,omitempty"`
-    Minbw   uint64   `json:"minbw,omitempty"`
-    Maxbw   uint64   `json:"maxbw,omitempty"`
-    Miniops uint64   `json:"miniops,omitempty"`
-    Maxiops uint64   `json:"maxiops,omitempty"`
+	Vol     []Volume `json:"vol,omitempty"`
+	Array   string   `json:"array,omitempty"`
+	Minbw   uint64   `json:"minbw,omitempty"`
+	Maxbw   uint64   `json:"maxbw,omitempty"`
+	Miniops uint64   `json:"miniops,omitempty"`
+	Maxiops uint64   `json:"maxiops,omitempty"`
 }
 
 type Volume struct {
-    VolumeName string `json:"volumeName"`
+	VolumeName string `json:"volumeName"`
 }
 
 //type SMART struct {
