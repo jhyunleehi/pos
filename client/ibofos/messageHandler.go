@@ -2,12 +2,15 @@ package ibofos
 
 import (
 	"encoding/json"
-	"errors"	
+	"errors"
+	"net/http"
+	"pos/common/events"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/spf13/viper"
 	log "github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 )
 
 var (
@@ -36,6 +39,7 @@ func init(){
 func Setup(param interface{}) (Requester, error ){
 	req := Requester {
 		XrId:           uuid.New().String(),
+		
 		IbofServerIP:   viper.GetString("server.ibof.ip"),
 		IbofServerPort: viper.GetInt("server.ibof.port"),
 		Param:          param,
@@ -43,6 +47,38 @@ func Setup(param interface{}) (Requester, error ){
 	}
 	return req, nil
 }
+
+func SendIbofos(c *gin.Context, command string, param interface{}) error {
+	log.Debugf("[%s][%+v]", command, param)
+	client, err := Setup(param)
+	if err != nil {
+		log.Errorf("%s", err.Error())
+		c.JSON(http.StatusInternalServerError, err.Error())
+		return err
+	}
+	req, res, err := client.Send(command)
+	if err != nil {
+		log.Errorf("%s", err.Error())
+		c.JSON(http.StatusInternalServerError, err.Error())
+		return err
+	}
+	if res.Result.Status.Code != 0 {
+		status, err := events.GetStatusInfo(res.Result.Status.Code)
+		if err != nil {
+			log.Errorf("%s", err.Error())
+			c.JSON(http.StatusInternalServerError, res)
+			return err
+		}
+		log.Errorf("%+v", status)
+		c.JSON(http.StatusInternalServerError, status)
+		return err
+	}
+	log.Debugf("%+v", req)
+	log.Debugf("%+v", res)
+	c.JSON(http.StatusOK, res)
+	return nil
+}
+
 
 func (rq Requester) Send(command string) (Request, Response, error) {
 	iBoFRequest := Request{
