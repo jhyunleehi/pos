@@ -8,6 +8,32 @@ Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
 ###
+DELETE http://{{targetip}}/api/ibofos/v1/system/mount
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+DELETE http://{{targetip}}/api/ibofos/v1/system
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+POST http://{{targetip}}/api/ibofos/v1/system/mount
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+POST http://{{targetip}}/api/ibofos/v1/system
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+GET http://{{targetip}}/api/ibofos/v1/system
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+################## array ################################
+###
 GET http://{{targetip}}/api/ibofos/v1/array/POSArray
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
@@ -18,6 +44,7 @@ Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
 
+################## device ################################
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices
 Content-Type: {{content_type}}
@@ -33,6 +60,7 @@ GET http://{{targetip}}/api/ibofos/v1/devices/unvme-ns-0/smart
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
+################## volume ################################
 ###
 GET http://{{targetip}}/api/ibofos/v1/volumes
 Content-Type: {{content_type}}

@@ -213,3 +213,37 @@
 [GIN] 2021/08/22 - 20:30:46 | 200 |    51.04037ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/all/scan"
 [GIN] 2021/08/22 - 20:30:55 | 200 |   36.795314ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices/unvme-ns-0/smart"
 [GIN] 2021/08/22 - 20:33:26 | 200 |    18.69742ms |       127.0.0.1 | GET      "/api/ibofos/v1/array"
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/ibofos/v1/array      --> pos/api/ibofos/v1/array.CreateArray (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/array/:arrayname --> pos/api/ibofos/v1/array.GetArrayInfo (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/array/:arrayname/devices --> pos/api/ibofos/v1/array.GetArrayDevice (4 handlers)
+[GIN-debug] DELETE /api/ibofos/v1/array/:arrayname --> pos/api/ibofos/v1/array.DeleteArray (4 handlers)
+[GIN-debug] POST   /api/ibofos/v1/array/:arrayname/mount --> pos/api/ibofos/v1/array.CreateArrayMount (4 handlers)
+[GIN-debug] DELETE /api/ibofos/v1/array/:arrayname/mount --> pos/api/ibofos/v1/array.DeleteArrayMount (4 handlers)
+[GIN-debug] POST   /api/ibofos/v1/array/:arrayname/:devices --> pos/api/ibofos/v1/array.ArrayDeviceAdd (4 handlers)
+[GIN-debug] DELETE /api/ibofos/v1/array/:arrayname/:devices --> pos/api/ibofos/v1/array.ArrayDeviceRemove (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices    --> pos/api/ibofos/v1/device.GetDevice (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/all/scan --> pos/api/ibofos/v1/device.GetDeviceScan (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/devices/:devicename/smart --> pos/api/ibofos/v1/device.GetDeviceSmart (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/system     --> pos/api/ibofos/v1/system.GetSystem (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/   --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.GetVolume (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/maxcount --> pos/api/ibofos/v1/volume.GetVolumeMaxcount (4 handlers)
+[GIN-debug] GET    /api/ibofos/v1/volumes/:volumename/hostnqn --> pos/api/ibofos/v1/volume.GetVolumeHostNQN (4 handlers)
+[GIN-debug] POST   /api/ibofos/v1/volumes    --> pos/api/ibofos/v1/volume.CreateVolume (4 handlers)
+[GIN-debug] POST   /api/ibofos/v1/volumes/:volumename/mount --> pos/api/ibofos/v1/volume.CreateVolumeMount (4 handlers)
+[GIN-debug] DELETE /api/ibofos/v1/volumes/:volumename/mount --> pos/api/ibofos/v1/volume.DeleteVolumeMount (4 handlers)
+[GIN-debug] DELETE /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.DeleteVolume (4 handlers)
+[GIN-debug] PATCH  /api/ibofos/v1/volumes/:volumename/qos --> pos/api/ibofos/v1/volume.UpdateVolumeQos (4 handlers)
+[GIN-debug] PATCH  /api/ibofos/v1/volumes/:volumename --> pos/api/ibofos/v1/volume.UpdateVolumeRename (4 handlers)
+[GIN] 2021/08/22 - 21:07:49 | 200 |   14.975938ms |       127.0.0.1 | GET      "/api/ibofos/v1/system"
+[GIN] 2021/08/22 - 21:07:53 | 200 |   17.308233ms |       127.0.0.1 | GET      "/api/ibofos/v1/array/POSArray"
+[GIN] 2021/08/22 - 21:07:59 | 200 |   16.630312ms |       127.0.0.1 | GET      "/api/ibofos/v1/array/POSArray/devices"
+[GIN] 2021/08/22 - 21:08:10 | 200 |   14.161188ms |       127.0.0.1 | GET      "/api/ibofos/v1/array/POSArray"
+[GIN] 2021/08/22 - 21:08:26 | 200 |   22.288136ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
+[GIN] 2021/08/22 - 21:08:43 | 200 |   17.539296ms |       127.0.0.1 | GET      "/api/ibofos/v1/array/POSArray"
+[GIN] 2021/08/22 - 21:08:48 | 200 |   17.302999ms |       127.0.0.1 | GET      "/api/ibofos/v1/devices"
