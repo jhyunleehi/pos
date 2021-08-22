@@ -1,12 +1,9 @@
 package volume
 
 import (
-	"net/http"
 	"pos/client/ibofos"
-	"pos/common/events"
 
 	"github.com/gin-gonic/gin"
-
 	log "github.com/sirupsen/logrus"
 )
 
@@ -20,8 +17,8 @@ func AddRoutes(r *gin.RouterGroup) {
 		route.GET("/:volumename/hostnqn", GetVolumeHostNQN)
 		route.POST("", CreateVolume)
 		route.POST("/:volumename/mount", CreateVolumeMount)
-		route.DELETE("/:volumename", DeleteVolume)
 		route.DELETE("/:volumename/mount", DeleteVolumeMount)
+		route.DELETE("/:volumename", DeleteVolume)
 		route.PATCH("/:volumename/qos", UpdateVolumeQos)
 		route.PATCH("/:volumename", UpdateVolumeRename)
 	}
@@ -38,7 +35,7 @@ func GetVolume(c *gin.Context) {
 	volumeparam := ibofos.VolumeParam{
 		Array: bodyparam.Param.Array,
 	}
-	err = SendIbofosAPI(c, "LISTVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "LISTVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -46,7 +43,7 @@ func GetVolume(c *gin.Context) {
 
 func GetVolumeMaxcount(c *gin.Context) {
 	volumeparam := ibofos.VolumeParam{}
-	err := SendIbofosAPI(c, "GETMAXVOLUMECOUNT", volumeparam)
+	err := ibofos.SendIbofos(c, "GETMAXVOLUMECOUNT", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -68,7 +65,7 @@ func CreateVolume(c *gin.Context) {
 		Maxbw:   bodyparam.Param.Maxbw,
 		Maxiops: bodyparam.Param.Maxiops,
 	}
-	err = SendIbofosAPI(c, "CREATEVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "CREATEVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -85,7 +82,7 @@ func DeleteVolume(c *gin.Context) {
 	volumeparam := ibofos.VolumeParam{}
 	volumeparam.Array = bodyparam.Param.Array
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "DELETEVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "DELETEVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -102,7 +99,7 @@ func CreateVolumeMount(c *gin.Context) {
 	volumeparam := ibofos.VolumeParam{}
 	volumeparam.Array = bodyparam.Param.Array
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "MOUNTVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "MOUNTVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -119,7 +116,7 @@ func DeleteVolumeMount(c *gin.Context) {
 	volumeparam := ibofos.VolumeParam{}
 	volumeparam.Array = bodyparam.Param.Array
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "UNMOUNTVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "UNMOUNTVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -138,7 +135,7 @@ func UpdateVolumeQos(c *gin.Context) {
 	volumeparam.Maxiops = bodyparam.Param.Maxiops
 	volumeparam.Maxbw = bodyparam.Param.Maxbw
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "UPDATEVOLUMEQOS", volumeparam)
+	err = ibofos.SendIbofos(c, "UPDATEVOLUMEQOS", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -156,7 +153,7 @@ func UpdateVolumeRename(c *gin.Context) {
 	volumeparam.Array = bodyparam.Param.Array
 	volumeparam.NewName = bodyparam.Param.NewName
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "RENAMEVOLUME", volumeparam)
+	err = ibofos.SendIbofos(c, "RENAMEVOLUME", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
@@ -171,41 +168,10 @@ func GetVolumeHostNQN(c *gin.Context) {
 		return
 	}
 	volumeparam := ibofos.VolumeParam{}
-	volumeparam.Array = bodyparam.Param.Array	
+	volumeparam.Array = bodyparam.Param.Array
 	volumeparam.Name = c.Param("volumename")
-	err = SendIbofosAPI(c, "GETHOSTNQN", volumeparam)
+	err = ibofos.SendIbofos(c, "GETHOSTNQN", volumeparam)
 	if err != nil {
 		log.Error(err.Error())
 	}
-}
-
-func SendIbofosAPI(c *gin.Context, command string, param interface{}) error {
-	log.Debugf("[%s][%+v]", command, param)
-	client, err := ibofos.Setup(param)
-	if err != nil {
-		log.Errorf("%s", err.Error())
-		c.JSON(http.StatusInternalServerError, err.Error())
-		return err
-	}
-	req, res, err := client.Send(command)
-	if err != nil {
-		log.Errorf("%s", err.Error())
-		c.JSON(http.StatusInternalServerError, err.Error())
-		return err
-	}
-	if res.Result.Status.Code != 0 {
-		status, err := events.GetStatusInfo(res.Result.Status.Code)
-		if err != nil {
-			log.Errorf("%s", err.Error())
-			c.JSON(http.StatusInternalServerError, res)
-			return err
-		}
-		log.Errorf("%+v", status)
-		c.JSON(http.StatusInternalServerError, status)
-		return err
-	}
-	log.Debugf("%+v", req)
-	log.Debugf("%+v", res)
-	c.JSON(http.StatusOK, res)
-	return nil
 }

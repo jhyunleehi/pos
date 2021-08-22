@@ -1,7 +1,6 @@
 package array
 
 import (
-	"net/http"
 	"pos/client/ibofos"
 
 	"github.com/gin-gonic/gin"
@@ -11,51 +10,148 @@ import (
 func AddRoutes(r *gin.RouterGroup) {
 	route := r.Group("/array")
 	{
-		route.GET("", GetArray)
+		route.POST("", CreateArray)
+		route.GET("/:arrayname", GetArrayInfo)
+		route.GET("/:arrayname/devices", GetArrayDevice)
+		route.DELETE("/:arrayname", DeleteArray)
+		route.POST("/:arrayname/mount", CreateArrayMount)
+		route.DELETE("/:arrayname/mount", DeleteArrayMount)
+		route.POST("/:arrayname/:devices", ArrayDeviceAdd)
+		route.DELETE("/:arrayname/:devices", ArrayDeviceRemove)
 	}
 }
 
-func GetArray(c *gin.Context) {
-
-	param := ibofos.ArrayParam{
-		Name: "POSArray",
-	}
-	client, err := ibofos.Setup(param)
-	if err != nil {
-		log.Errorf("%v", err)
-		c.JSON(http.StatusInternalServerError, err.Error())
+func CreateArray(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
 		return
 	}
-
-	req, res, err := client.Send("ARRAYINFO")
-	if err != nil {
-		log.Errorf("%s", err.Error())
+	param := ibofos.ArrayParam{
+		Name:     bodyparam.Param.Name,
+		RaidType: bodyparam.Param.RaidType,
+		Buffer:   bodyparam.Param.Buffer,
+		Data:     bodyparam.Param.Data,
+		Spare:    bodyparam.Param.Spare,
 	}
-	log.Debugf("%v", req)
-	log.Debugf("%v", res)
-	c.JSON(http.StatusOK, res)
-	// var command = "GETIBOFOSINFO"
+	err = ibofos.SendIbofos(c, "CREATEARRAY", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// systemInfoReq := model.Request{
-	// 	RID:     "fromfakeclient",
-	// 	COMMAND: command,
-	// }
+func DeleteArray(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	err = ibofos.SendIbofos(c, "DELETEARRAY", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// reqJSON, err := json.Marshal(systemInfoReq)
-	// if err != nil {
-	// 	log.Debug("error:", err)
-	// }
-	// log.Debugf("[%+v]", systemInfoReq)
-	// log.Debugf("[%+v]", reqJSON)
+func GetArrayDevice(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	err = ibofos.SendIbofos(c, "LISTARRAYDEVICE", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// displaymgr.PrintRequest(string(reqJSON))
+func GetArrayInfo(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	err = ibofos.SendIbofos(c, "ARRAYINFO", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// socketmgr.Connect()
-	// resJSON := socketmgr.SendReqAndReceiveRes(string(reqJSON))
-	// socketmgr.Close()
+func CreateArrayMount(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	err = ibofos.SendIbofos(c, "MOUNTARRAY", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// displaymgr.PrintResponse(command, resJSON, true, true, true)
+func DeleteArrayMount(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	err = ibofos.SendIbofos(c, "UNMOUNTARRAY", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
-	// c.JSONP(http.StatusOK, resJSON)
+func ArrayDeviceAdd(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	param.Spare = append(param.Spare, ibofos.Device{DeviceName: c.Param("devices")})
+	err = ibofos.SendIbofos(c, "ADDDEVICE", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
 
+func ArrayDeviceRemove(c *gin.Context) {
+	bodyparam := ibofos.BodyParam{}
+	err := c.ShouldBindJSON(&bodyparam)
+	if err != nil && err.Error() != "EOF" {
+		log.Error(err.Error())
+		c.JSON(400, gin.H{"error": "Request JSON Parsing Error", "origin": err.Error()})
+		return
+	}
+	param := ibofos.ArrayParam{}
+	param.Name = c.Param("arrayname")
+	param.Spare = append(param.Spare, ibofos.Device{DeviceName: c.Param("devices")})
+	err = ibofos.SendIbofos(c, "REMOVEDEVICE", param)
+	if err != nil {
+		log.Error(err.Error())
+	}
 }

@@ -3,15 +3,20 @@
 @content_type=application/json
 
 ###
-GET http://{{targetip}}/api/ibofos/v1/array
-Content-Type: {{content_type}}
-Accept: {{{accept}}}
-
-
-###
 GET http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
+
+###
+GET http://{{targetip}}/api/ibofos/v1/array/POSArray
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+###
+GET http://{{targetip}}/api/ibofos/v1/array/POSArray/devices
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices

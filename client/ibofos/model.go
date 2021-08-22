@@ -13,26 +13,6 @@ type Response struct {
 	Info            interface{} `json:"info,omitempty"`
 }
 
-type BodyParam struct {
-	Param struct {
-		Name        string   `json:"name,omitempty"`
-		NewName     string   `json:"newname,omitempty"`
-		Array       string   `json:"array,omitempty"`
-		SubNQN      string   `json:"subnqn,omitempty"`
-		Size        uint64   `json:"size,omitempty"`
-		Maxiops     uint64   `json:"maxiops,omitempty"`
-		Maxbw       uint64   `json:"maxbw,omitempty"`
-		NameSuffix  uint64   `json:"namesuffix,omitempty"`
-		TotalCount  uint64   `json:"totalcount,omitempty"`
-		StopOnError bool     `json:"stoponerror,omitempty"`
-		MountAll    bool     `json:"mountall,omitempty"`
-		FtType      int      `json:"fttype,omitempty"`
-		RaidType    string   `json:"raidtype,omitempty"`
-		Buffer      []Device `json:"buffer,omitempty"`
-		Data        []Device `json:"data,omitempty"`
-		Spare       []Device `json:"spare,omitempty"`
-	} `json:"param,omitempty"`
-}
 
 type Result struct {
 	Status Status      `json:"status"`
@@ -197,3 +177,25 @@ type Volume struct {
 //	VolatileMemoryBackup     string `json:"volatile_memory_backup,omitempty"`
 //	WarningTemperatureTime   string `json:"warning_temperature_time,omitempty"`
 //}
+
+
+type BodyParam struct {
+	Param struct {
+		Name        string   `json:"name,omitempty"`
+		NewName     string   `json:"newname,omitempty"`
+		Array       string   `json:"array,omitempty"`
+		SubNQN      string   `json:"subnqn,omitempty"`
+		Size        uint64   `json:"size,omitempty"`
+		Maxiops     uint64   `json:"maxiops,omitempty"`
+		Maxbw       uint64   `json:"maxbw,omitempty"`
+		NameSuffix  uint64   `json:"namesuffix,omitempty"`
+		TotalCount  uint64   `json:"totalcount,omitempty"`
+		StopOnError bool     `json:"stoponerror,omitempty"`
+		MountAll    bool     `json:"mountall,omitempty"`
+		FtType      int      `json:"fttype,omitempty"`
+		RaidType    string   `json:"raidtype,omitempty"`
+		Buffer      []Device `json:"buffer,omitempty"`
+		Data        []Device `json:"data,omitempty"`
+		Spare       []Device `json:"spare,omitempty"`
+	} `json:"param,omitempty"`
+}

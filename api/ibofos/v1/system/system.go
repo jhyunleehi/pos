@@ -33,3 +33,6 @@ func GetSystem(c *gin.Context) {
 	log.Debugf("%v", res)
 	c.JSON(http.StatusOK, res)
 }
+
+
+

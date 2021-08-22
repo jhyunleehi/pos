@@ -14,7 +14,7 @@ ginfw:
     read_time_out: 60
     write_time_out: 60
   log:
-    dir: log
+    directory: log
 logging:
   level: debug
   directory: log

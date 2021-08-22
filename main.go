@@ -86,7 +86,7 @@ func setupRouter() *gin.Engine {
 
 func main() {
 
-	logDir := viper.GetString("ginfw.log.dir")
+	logDir := viper.GetString("ginfw.log.directory")
 	_, err := os.Stat(logDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(logDir, 0755)
