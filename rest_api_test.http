@@ -5,71 +5,113 @@
 ###
 GET http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 DELETE http://{{targetip}}/api/ibofos/v1/system/mount
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 DELETE http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 POST http://{{targetip}}/api/ibofos/v1/system/mount
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 POST http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/system
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ################## array ################################
 ###
 GET http://{{targetip}}/api/ibofos/v1/array/POSArray
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/array/POSArray/devices
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 
 ################## device ################################
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices/all/scan
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/devices/unvme-ns-0/smart
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
+
+################## qos ################################
+
+###
+GET http://{{targetip}}/api/ibofos/v1/qos
+Content-Type: {{content_type}}
+Accept: {{accept}}
+
+{
+    "param": {
+        "array": "POSArray",
+        "name": "vol1"
+    }
+}
+
+###
+POST http://{{targetip}}/api/ibofos/v1/qos
+Content-Type: {{content_type}}
+Accept: {{accept}}
+
+{
+    "param": {
+        "array": "POSArray",
+        "name": "vol1",        
+        "maxbw": 0,
+        "maxiops": 100,
+        "minbw": 0,
+        "miniops":0
+    }
+}
+
+###
+DELETE http://{{targetip}}/api/ibofos/v1/qos
+Content-Type: {{content_type}}
+Accept: {{accept}}
+
+{
+    "param": {
+        "array": "POSArray",
+        "name": "vol1"
+    }
+}
 
 ################## volume ################################
 ###
 GET http://{{targetip}}/api/ibofos/v1/volumes
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 ###
 GET http://{{targetip}}/api/ibofos/v1/volumes
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -80,14 +122,14 @@ Accept: {{{accept}}}
 ###
 GET http://{{targetip}}/api/ibofos/v1/volumes/maxcount
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 
 
 ###
 POST  http://{{targetip}}/api/ibofos/v1/volumes
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -102,7 +144,7 @@ Accept: {{{accept}}}
 ###
 POST  http://{{targetip}}/api/ibofos/v1/volumes/vol2/mount
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -114,7 +156,7 @@ Accept: {{{accept}}}
 ###
 DELETE  http://{{targetip}}/api/ibofos/v1/volumes/vol2/mount
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -126,7 +168,7 @@ Accept: {{{accept}}}
 ###
 DELETE  http://{{targetip}}/api/ibofos/v1/volumes/vol2
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -137,7 +179,7 @@ Accept: {{{accept}}}
 ###
 PATCH  http://{{targetip}}/api/ibofos/v1/volumes/vol2/qos
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -150,7 +192,7 @@ Accept: {{{accept}}}
 ###
 PATCH  http://{{targetip}}/api/ibofos/v1/volumes/vol2
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
@@ -163,7 +205,7 @@ Accept: {{{accept}}}
 ###
 GET  http://{{targetip}}/api/ibofos/v1/volumes/vol2/hostnqn
 Content-Type: {{content_type}}
-Accept: {{{accept}}}
+Accept: {{accept}}
 
 {
     "param": {
