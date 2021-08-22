@@ -34,15 +34,132 @@ Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
 ###
-GET http://{{targetip}}/api/ibofos/v1/volumes?array=POSArray
+GET http://{{targetip}}/api/ibofos/v1/volumes
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray"
+    }
+}
 
 ###
-GET http://{{targetip}}/api/ibofos/v1/volumes/vol1?array=POSArray
+GET http://{{targetip}}/api/ibofos/v1/volumes/maxcount
 Content-Type: {{content_type}}
 Accept: {{{accept}}}
 
 
 
+###
+POST  http://{{targetip}}/api/ibofos/v1/volumes
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
 
+{
+    "param": {
+        "array": "POSArray",
+        "name": "vol2",
+        "size": 1073741824,
+        "maxbw": 0,
+        "maxiops": 0
+    }
+}
+
+###
+POST  http://{{targetip}}/api/ibofos/v1/volumes/vol2/mount
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray"
+    }
+}
+
+
+###
+DELETE  http://{{targetip}}/api/ibofos/v1/volumes/vol2/mount
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray"
+    }
+}
+
+
+###
+DELETE  http://{{targetip}}/api/ibofos/v1/volumes/vol2
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray"
+    }
+}
+
+###
+PATCH  http://{{targetip}}/api/ibofos/v1/volumes/vol2/qos
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray",
+        "maxiops": 100,
+        "maxbw": 500
+    }
+}
+
+###
+PATCH  http://{{targetip}}/api/ibofos/v1/volumes/vol2
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray",
+        "newname": "newvol2"       
+    }
+}
+
+
+###
+GET  http://{{targetip}}/api/ibofos/v1/volumes/vol2/hostnqn
+Content-Type: {{content_type}}
+Accept: {{{accept}}}
+
+{
+    "param": {
+        "array": "POSArray"        
+    }
+}
+
+#############################################################
+
+###
+POST  http://localhost:8000/
+Content-Type:text/json
+Accept:text/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "framework_get_subsystems"
+}
+
+
+
+###
+POST  http://localhost:8000/
+Content-Type:application/json
+Accept:application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "rpc_get_methods"
+}
